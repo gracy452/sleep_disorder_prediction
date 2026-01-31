@@ -1,15 +1,12 @@
 import streamlit as st
-import pickle
 import numpy as np
+import joblib
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-model_path = os.path.join(BASE_DIR, "sleep_model.pkl")
-scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
-
-model = pickle.load(open(model_path, "rb"))
-scaler = pickle.load(open(scaler_path, "rb"))
+model = joblib.load(os.path.join(BASE_DIR, "sleep_model.joblib"))
+scaler = joblib.load(os.path.join(BASE_DIR, "scaler.joblib"))
 
 st.title("🛌 Sleep Disorder Prediction System")
 
